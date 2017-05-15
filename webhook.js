@@ -93,9 +93,9 @@ app.post('/ai', (req, res) => {
         
         let msg = 'The current condition in ';
         return res.json({
-          speech: msg,
-          displayText: msg,
-          source: 'weather'
+          "speech": msg,
+          "displayText": msg,
+          "source": 'booking'
         });
       } else {
         let errorMessage = 'I failed to look up the city name.';
