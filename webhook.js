@@ -80,9 +80,9 @@ function sendMessage(event) {
   console.log('*** Webhook for api.ai query ***');
   console.log(req.body.result);
 
-  if (req.body.result.action === 'weather') {
+  if (req.body.result.action === 'booking') {
     console.log('*** weather ***');
-    let city = req.body.result.parameters['geo-city'];
+    let city = req.body.result.parameters['place'];
     
 
     request.get(restUrl, (err, response, body) => {
