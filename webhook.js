@@ -81,7 +81,7 @@ app.post('/ai', (req, res) => {
   console.log('*** Webhook for api.ai query ***');
   
 
-  if (req.body.result.action === 'boking') {
+  if (req.body.result.action === 'booking') {
     console.log('*** weather ***');
     let city = req.body.result.parameters['place'];
     let restUrl = '';
