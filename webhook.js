@@ -84,15 +84,12 @@ app.post('/ai', (req, res) => {
   if (req.body.result.action === 'booking') {
     console.log('*** weather ***');
     let city = req.body.result.parameters['place'];
-    let restUrl = '';
-        let json = JSON.parse(body);
-        console.log(json);
-        
+    let restUrl = ''; 
         let msg = 'The current condition in ';
         return res.json({
-          "speech": msg,
-          "displayText": msg,
-          "source": 'booking'
+          speech: msg,
+          displayText: msg,
+          source: 'booking'
         });
  
 
