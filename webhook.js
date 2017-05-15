@@ -76,4 +76,32 @@ function sendMessage(event) {
   });
 
   apiai.end();
-}
+}app.post('/ai', (req, res) => {
+  console.log('*** Webhook for api.ai query ***');
+  console.log(req.body.result);
+
+  if (req.body.result.action === 'weather') {
+    console.log('*** weather ***');
+    let city = req.body.result.parameters['geo-city'];
+    
+
+    request.get(restUrl, (err, response, body) => {
+      let msg = 'The current condition in '
+        return res.json({
+          speech: msg,
+          displayText: msg,
+          source: 'weather'
+        });
+      } else {
+        let errorMessage = 'I failed to look up the city name.';
+        return res.status(400).json({
+          status: {
+            code: 400,
+            errorType: errorMessage
+          }
+        });
+      }
+    })
+  }
+
+});
