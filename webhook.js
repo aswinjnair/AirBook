@@ -85,8 +85,18 @@ app.post('/ai', (req, res) => {
     console.log('*** weather ***');
     let city = req.body.result.parameters['place'];
     let restUrl = '';
+        let json = JSON.parse(body);
+        console.log(json);
+        
+        let msg = 'The current condition in ';
+        return res.json({
+          "speech": msg,
+          "displayText": msg,
+          "source": 'booking'
+        });
+ 
 
-    request.get(restUrl, (err, response, body) => {
+   /* request.get(restUrl, (err, response, body) => {
       if (!err && response.statusCode == 200) {
         let json = JSON.parse(body);
         console.log(json);
@@ -106,7 +116,7 @@ app.post('/ai', (req, res) => {
           }
         });
       }
-    })
+    })*/
   }
 
 });
