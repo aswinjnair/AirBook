@@ -76,3 +76,4 @@ function sendMessage(event) {
   });
 
   apiai.end();
+}
