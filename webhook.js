@@ -77,3 +77,36 @@ function sendMessage(event) {
 
   apiai.end();
 }
+app.post('/ai', (req, res) => {
+  console.log('*** Webhook for api.ai query ***');
+  
+
+  if (req.body.result.action === 'boking') {
+    console.log('*** weather ***');
+    let city = req.body.result.parameters['place'];
+    let restUrl = '';
+
+    request.get(restUrl, (err, response, body) => {
+      if (!err && response.statusCode == 200) {
+        let json = JSON.parse(body);
+        console.log(json);
+        
+        let msg = 'The current condition in ';
+        return res.json({
+          speech: msg,
+          displayText: msg,
+          source: 'weather'
+        });
+      } else {
+        let errorMessage = 'I failed to look up the city name.';
+        return res.status(400).json({
+          status: {
+            code: 400,
+            errorType: errorMessage
+          }
+        });
+      }
+    })
+  }
+
+});
